@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iframe PDF embed</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css" integrity="sha512-rO+olRTkcf304DQBxSWxln8JXCzTHlKnIdnMUwYvQa9/Jd4cQaNkItIUj6Z4nvW1dqK0SKXLbn9h4KwZTNtAyw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: sans-serif;
+      background: #f0f0f0;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .label {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 4px 4px 0 0;
+      color: #fff;
+      background: #555;
+    }
+
+    .container {
+      background: #fff;
+      padding: 16px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    iframe {
+      border: none;
+      width: 100%;
+      aspect-ratio: 1 / 1.414;
+    }
+
+  </style>
+</head>
+<body>
+
+  <pre><code class="language-css">iframe {
+  border: none;
+  width: 100%;
+  aspect-ratio: 1 / 1.414;
+}</code></pre>
+
+  <div class="section">
+    <div class="label">no params</div><br>
+    <div class="container">
+      <pre><code class="language-html">&lt;iframe src="sample.pdf"&gt;&lt;/iframe&gt;</code></pre>
+      <iframe src="sample.pdf"></iframe>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="label">toolbar=0 &amp; navpanes=0</div><br>
+    <div class="container">
+      <pre><code class="language-html">&lt;iframe src="sample.pdf#toolbar=0&amp;navpanes=0"&gt;&lt;/iframe&gt;</code></pre>
+      <iframe src="sample.pdf#toolbar=0&navpanes=0"></iframe>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="label">toolbar=0 &amp; navpanes=0 &amp; scrollbar=0</div><br>
+    <div class="container">
+      <pre><code class="language-html">&lt;iframe src="sample.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0"&gt;&lt;/iframe&gt;</code></pre>
+      <iframe src="sample.pdf#toolbar=0&navpanes=0&scrollbar=0"></iframe>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="label">toolbar=0 &amp; navpanes=0 &amp; scrollbar=0 &amp; zoom=FitH</div><br>
+    <div class="container">
+      <pre><code class="language-html">&lt;iframe src="sample.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0&amp;zoom=FitH"&gt;&lt;/iframe&gt;</code></pre>
+      <iframe src="sample.pdf#toolbar=0&navpanes=0&scrollbar=0&zoom=FitH"></iframe>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="label">toolbar=0 &amp; navpanes=0 &amp; scrollbar=0 &amp; zoom=Fit</div><br>
+    <div class="container">
+      <pre><code class="language-html">&lt;iframe src="sample.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0&amp;zoom=Fit"&gt;&lt;/iframe&gt;</code></pre>
+      <iframe src="sample.pdf#toolbar=0&navpanes=0&scrollbar=0&zoom=Fit"></iframe>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js" integrity="sha512-EBLzUL8XLl+va/zAsmXwS7Z2B1F9HUHkZwyS/VKwh3S7T/U0nF4BaU29EP/ZSf6zgiIxYAnKLu6bJ8dqpmX5uw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>hljs.highlightAll();</script>
+</body>
+</html>
