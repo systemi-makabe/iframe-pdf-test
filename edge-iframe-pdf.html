@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>EDGE iframe 内 PDF 表示倍率テスト</title>
+<style>
+  body { font-family: sans-serif; margin: 16px; max-width: 700px; }
+  h1 { font-size: 18px; }
+  ul { line-height: 1.8; }
+  #controls { margin: 16px 0; display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  button { padding: 6px 12px; cursor: pointer; }
+  #frame-wrap {
+    width: 500px;
+    aspect-ratio: 1 / 1.414;
+    border: 1px solid #999;
+  }
+  iframe { border: none; width: 100%; height: 100%; }
+  #currentUrl { font-size: 12px; word-break: break-all; color: #555; margin: 8px 0; }
+</style>
+</head>
+<body>
+
+<h1>EDGE iframe 内 PDF 表示倍率テスト</h1>
+
+<ul>
+  <li>Edge の ズームを100%以外（例:125%）にする</li>
+  <li>フラグメント「なし（デフォルト）」を選択したまま、「PDF再読込」を数回クリックする</li>
+  <li>表示倍率がクリックのたびに変わることを確認する
+    <ul>
+      <li>変わらない場合、PDF表示領域をクリックしてから「PDF再読込」を何度か押す</li>
+    </ul>
+  </li>
+  <li>「zoom=100」に切り替えて同様の操作を行い、サイズが拡大しないがコンテナ幅にもフィットしないことを確認する</li>
+</ul>
+
+<div id="controls">
+  <span>
+    <label><input type="radio" name="mode" value="current" checked> なし（デフォルト）</label>
+    <label><input type="radio" name="mode" value="zoom100"> zoom=100</label>
+  </span>
+  <button id="replaceBtn">PDF再読込</button>
+</div>
+
+<div id="currentUrl"></div>
+
+<div id="frame-wrap">
+  <iframe id="pdf-frame" src="sample.pdf"></iframe>
+</div>
+
+<script>
+  const FRAGMENTS = {
+    current: '',
+    zoom100: '#zoom=100',
+  };
+
+  function currentMode() {
+    return document.querySelector('input[name="mode"]:checked').value;
+  }
+
+  function replaceIframe() {
+    const url = 'sample.pdf' + FRAGMENTS[currentMode()];
+    const old = document.getElementById('pdf-frame');
+    const next = document.createElement('iframe');
+    next.id = 'pdf-frame';
+    next.src = url;
+    old.replaceWith(next);
+    document.getElementById('currentUrl').textContent = 'src: ' + url;
+  }
+
+  document.getElementById('replaceBtn').addEventListener('click', replaceIframe);
+  document.getElementById('currentUrl').textContent = 'src: sample.pdf';
+</script>
+
+</body>
+</html>
